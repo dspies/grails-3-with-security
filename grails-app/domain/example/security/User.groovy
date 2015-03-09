@@ -1,8 +1,6 @@
 package example.security
 
-import org.springframework.security.core.userdetails.UserDetails
-
-class User implements UserDetails, Serializable {
+class User implements Serializable {
 
 	String username
 	String password
@@ -21,21 +19,6 @@ class User implements UserDetails, Serializable {
 	}
 
 	Set<Role> getAuthorities() {
-		UserRole.findAllByUser(this).collect { it.role } as Set
+		UserRole.findAllByUser(this)?.collect { it.role } as Set
 	}
-
-    @Override
-    boolean isAccountNonExpired() {
-        return !accountExpired
-    }
-
-    @Override
-    boolean isAccountNonLocked() {
-        return !accountLocked
-    }
-
-    @Override
-    boolean isCredentialsNonExpired() {
-        return !passwordExpired
-    }
 }

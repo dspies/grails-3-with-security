@@ -1,8 +1,5 @@
-
-import example.security.GrailsUserDetailsService
-//import simpleappwithsecurity.SecurityConfiguration
-
 beans = {
-//    webSecurityConfiguration(SecurityConfiguration)
-    userDetailsService(GrailsUserDetailsService)
+    userDetailsService(example.security.GrailsUserDetailsService)
+    applicationSecurity(simpleappwithsecurity.ApplicationSecurity)
+    authenticationSecurity(simpleappwithsecurity.AuthenticationSecurity)
 }
